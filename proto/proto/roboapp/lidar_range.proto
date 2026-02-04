@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package roboapp;
+
+import "buf/validate/validate.proto";
+
+message LiDARRange {
+  float left = 1 [(buf.validate.field).float = {
+    gte: 0
+    lte: 100000
+  }];
+  float rear_left = 2 [(buf.validate.field).float = {
+    gte: 0
+    lte: 100000
+  }];
+  float rear_right = 3 [(buf.validate.field).float = {
+    gte: 0
+    lte: 100000
+  }];
+  float right = 4 [(buf.validate.field).float = {
+    gte: 0
+    lte: 100000
+  }];
+}

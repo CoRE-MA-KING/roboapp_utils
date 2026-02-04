@@ -1,0 +1,34 @@
+name: Test Protobuf Definitions
+
+on:
+  push:
+    branches: [ "main", "master" ]
+    paths:
+      - 'proto/**'
+      - 'scripts/**'
+      - '.github/workflows/test_protos.yml'
+  pull_request:
+    paths:
+      - 'proto/**'
+      - 'scripts/**'
+      - '.github/workflows/test_protos.yml'
+  workflow_dispatch:
+
+jobs:
+  validate-protos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: bufbuild/buf-setup-action@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Buf Lint
+        run: buf lint
+
+      - name: Buf Format Check
+        run: buf format -d --exit-code
+
+      - name: Run Code Generation Test
+        run: ./scripts/test_codegen.sh
