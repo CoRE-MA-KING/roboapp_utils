@@ -1,7 +1,7 @@
 import random
 
 from examples.common.expub import ExamplePub
-from examples.domain.messages import DamagePanelRecognition, Target
+from examples.domain.proto.damage_panel_pb2 import DamagePanelRecognition, Target
 
 key_expr = "damagepanel"
 
@@ -22,7 +22,6 @@ class DamagePanelPub(ExamplePub):
                     distance=random.randint(0, 100),
                 )
             )
-
         return msg
 
 

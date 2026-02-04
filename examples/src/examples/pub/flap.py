@@ -1,14 +1,14 @@
 import random
 
 from examples.common.expub import ExamplePub
-from examples.domain.messages import FlapMessage
+from examples.domain.proto.flap_pb2 import Flap
 
 key_expr = "flap"
 
 
 class FlapPub(ExamplePub):
-    def create_message(self) -> FlapMessage:
-        return FlapMessage(
+    def create_message(self) -> Flap:
+        return Flap(
             pitch=random.uniform(0.0, 15.0),
             yaw=random.uniform(0.0, 40.0),
         )

@@ -1,14 +1,14 @@
 import random
 
 from examples.common.expub import ExamplePub
-from examples.domain.messages import DisksMessage
+from examples.domain.proto.disks_pb2 import Disks
 
 key_expr = "disks"
 
 
 class DisksPub(ExamplePub):
-    def create_message(self) -> DisksMessage:
-        return DisksMessage(
+    def create_message(self) -> Disks:
+        return Disks(
             left=random.randint(0, 35),
             right=random.randint(0, 35),
         )
