@@ -1,0 +1,6 @@
+version: v1
+plugins:
+  - plugin: buf.build/protocolbuffers/python
+    out: examples/src/examples/domain/
+    opt:
+      - "pyi_out=src/examples/domain/"
