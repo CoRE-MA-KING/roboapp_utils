@@ -13,10 +13,7 @@ protoc \
 touch src/roboapp/__init__.py src/buf/__init__.py src/buf/validate/__init__.py
 """
 sources = ["../proto/**/*.proto"]
-outputs = [
-  "src/roboapp/*_pb2.py*",
-  "src/buf/validate/*_pb2.py*"
-]
+outputs = ["src/roboapp/*_pb2.py*", "src/buf/validate/*_pb2.py*"]
 
 [tasks.deps]
 description = "Install and sync Python dependencies using uv for examples"
