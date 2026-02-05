@@ -1,14 +1,13 @@
-import shutil
 from pathlib import Path
 
 from prompt_toolkit.shortcuts import (
     radiolist_dialog,
 )
 
-from configurator.check import get_default_config_path
+from configurator.autostart import parse_autostart, place_autostart
 from configurator.systemd import (
     enable_systemd_service,
-    place_systemd,
+    place_zenoh_config,
     run_systemd_services,
 )
 
@@ -28,11 +27,14 @@ if __name__ == "__main__":
 
     match result:
         case "install":
-            shutil.copy2(
-                Path(__file__).parents[2] / "template" / "zenoh.json5",
-                get_default_config_path("zenoh.json5"),
-            )
-            place_systemd()
+            root_path = Path(__file__).parents[3] / "autostart.toml"
+
+            targets = parse_autostart(root_path)
+
+            for t in targets:
+                place_autostart(t)
+
+            place_zenoh_config()
         case "start":
             res_start: bool | None = radiolist_dialog(
                 title="Roboappの起動・停止",
