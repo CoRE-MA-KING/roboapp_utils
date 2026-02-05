@@ -5,3 +5,7 @@ config_roots = [
   "./configurator/",
   "./examples/",
 ]
+
+[tasks.configurator]
+alias = "start"
+depends = ["//configurator:configurator"]
