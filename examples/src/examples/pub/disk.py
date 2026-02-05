@@ -1,14 +1,14 @@
 import random
 
 from examples.common.expub import ExamplePub
-from examples.domain.proto.disks_pb2 import Disks
+from examples.domain.proto.roboapp.disks_pb2 import DisksMessage
 
 key_expr = "disks"
 
 
 class DisksPub(ExamplePub):
-    def create_message(self) -> Disks:
-        return Disks(
+    def create_message(self) -> DisksMessage:
+        return DisksMessage(
             left=random.randint(0, 35),
             right=random.randint(0, 35),
         )

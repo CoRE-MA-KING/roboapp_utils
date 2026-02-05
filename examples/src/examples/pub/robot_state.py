@@ -1,15 +1,15 @@
 import argparse
 
 from examples.common.expub import ExamplePub
-from examples.domain.proto.robot_state_pb2 import RobotState
+from examples.domain.proto.roboapp.robot_state_pb2 import RobotStateMessage
 
 key_expr = "robotstate"
 
 
 class RobotStatePub(ExamplePub):
-    def create_message(self) -> RobotState:
+    def create_message(self) -> RobotStateMessage:
         # RobotStateIdのenum値は適宜置き換えてください
-        return RobotState(
+        return RobotStateMessage(
             state=0,  # 例: IDLE
             color="blue",
         )

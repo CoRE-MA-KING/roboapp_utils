@@ -1,14 +1,14 @@
 import random
 
 from examples.common.expub import ExamplePub
-from examples.domain.proto.camera_switch_pb2 import CameraSwitch
+from examples.domain.proto.roboapp.camera_switch_pb2 import CameraSwitchMessage
 
 key_expr = "cam/switch"
 
 
 class CameraSwitchPub(ExamplePub):
-    def create_message(self) -> CameraSwitch:
-        return CameraSwitch(camera_id=random.randint(0, 2))
+    def create_message(self) -> CameraSwitchMessage:
+        return CameraSwitchMessage(camera_id=random.randint(0, 2))
 
 
 if __name__ == "__main__":

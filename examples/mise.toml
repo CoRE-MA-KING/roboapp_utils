@@ -1,32 +1,47 @@
 [tools]
 uv = "0.9"
 
+[tasks.generate_proto]
+description = "Generate Python code from Protobuf files"
+run = """
+rm -f src/examples/domain/proto/*_pb2.py
+rm -f src/examples/domain/proto/*_pb2.pyi
+protoc \
+  --python_out=src/examples/domain/proto \
+  --pyi_out=src/examples/domain/proto \
+  --proto_path=../proto \
+  ../proto/roboapp/*.proto
+"""
+sources = ["../proto/roboapp/*.proto"]
+outputs = [
+  "src/examples/domain/proto/*_pb2.py",
+  "src/examples/domain/proto/*_pb2.pyi"
+]
+
 [tasks.deps]
 description = "Install and sync Python dependencies using uv for examples"
 run = "uv sync"
-alias = "build"
 sources = [
   "pyproject.toml",
   "uv.lock",
 ]
 outputs = { auto = true }
 
+[tasks.build]
+depends = ["generate_proto", "deps"]
+
 [tasks.lint]
-depends = ["deps"]
+depends = ["deps", "build"]
 description = "Run Python linters and type checkers for examples"
 run = ["uv run task lint", "uv run task check"]
 
 [tasks.format]
-depends = ["deps"]
+depends = ["deps", "build"]
 description = "Format Python code in examples using ruff"
 run = "uv run task format"
 
 [tasks.test]
-depends = ["deps"]
+depends = ["deps", "build"]
 description = "Execute Python tests for examples"
 run = "uv run task test"
 
-[tasks.start]
-depends = ["deps"]
-description = "Start the examples application"
-run = "uv run python3 src/examples/main.py"

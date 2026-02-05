@@ -1,5 +1,5 @@
 from examples.common.expub import ExamplePub
-from examples.domain.proto.lidar_range_pb2 import LiDARRange
+from examples.domain.proto.roboapp.lidar_range_pb2 import LiDARRange
 
 key_expr = "lidar/range"
 
