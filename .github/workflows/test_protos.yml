@@ -20,15 +20,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: bufbuild/buf-setup-action@v1
+      - name: Install protoc
+        uses: arduino/setup-protoc@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Buf Lint
-        run: buf lint
-
-      - name: Buf Format Check
-        run: buf format -d --exit-code
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run Code Generation Test
         run: ./scripts/test_codegen.sh

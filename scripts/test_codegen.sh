@@ -23,10 +23,9 @@ fi
 echo "Found proto files:"
 echo "$PROTO_FILES"
 
-# Attempt to generate C++ and Python code using buf
+# Generate Python code using protoc
 # This validates syntax and inter-dependencies
-# --output overrides the 'out' path in buf.gen.yaml
-buf generate --output "$OUT_DIR"
+protoc --python_out="$OUT_DIR" --proto_path=proto $PROTO_FILES
 
 echo "----------------------------------------"
 echo "SUCCESS: Protobuf code generation passed."

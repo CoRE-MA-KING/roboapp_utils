@@ -4,18 +4,18 @@ uv = "0.9"
 [tasks.generate_proto]
 description = "Generate Python code from Protobuf files"
 run = """
-rm -f src/examples/domain/proto/*_pb2.py
-rm -f src/examples/domain/proto/*_pb2.pyi
+mkdir -p src/roboapp src/buf/validate
 protoc \
-  --python_out=src/examples/domain/proto \
-  --pyi_out=src/examples/domain/proto \
+  --python_out=src \
+  --pyi_out=src \
   --proto_path=../proto \
-  ../proto/roboapp/*.proto
+  $(find ../proto -name "*.proto")
+touch src/roboapp/__init__.py src/buf/__init__.py src/buf/validate/__init__.py
 """
-sources = ["../proto/roboapp/*.proto"]
+sources = ["../proto/**/*.proto"]
 outputs = [
-  "src/examples/domain/proto/*_pb2.py",
-  "src/examples/domain/proto/*_pb2.pyi"
+  "src/roboapp/*_pb2.py*",
+  "src/buf/validate/*_pb2.py*"
 ]
 
 [tasks.deps]
@@ -43,5 +43,4 @@ run = "uv run task format"
 [tasks.test]
 depends = ["deps", "build"]
 description = "Execute Python tests for examples"
-run = "uv run task test"
-
+run = ["uv run task test"]

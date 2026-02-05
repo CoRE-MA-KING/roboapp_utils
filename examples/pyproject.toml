@@ -42,6 +42,9 @@ ignore_missing_imports = true
 [tool.ruff.lint]
 extend-select = ["I", "TC", "UP", "W"]
 
+[tool.hatch.build.targets.wheel]
+packages = ["src/examples", "src/roboapp", "src/buf"]
+
 [tool.taskipy.tasks]
 check = "mypy . --strict"
 lint = "ruff check ."
