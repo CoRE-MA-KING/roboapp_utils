@@ -27,7 +27,7 @@ if __name__ == "__main__":
 
     match result:
         case "install":
-            root_path = Path(__file__).parents[3] / "autostart.toml"
+            root_path = Path(__file__).parents[4] / "autostart.toml"
 
             targets = parse_autostart(root_path)
 
