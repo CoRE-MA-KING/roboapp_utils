@@ -8,7 +8,6 @@ config_roots = [
 
 [tools]
 protoc = "latest"
-buf = "latest"
 
 [tasks.test]
 description = "Run all tests"

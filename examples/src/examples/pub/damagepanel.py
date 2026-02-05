@@ -1,7 +1,7 @@
 import random
 
 from examples.common.expub import ExamplePub
-from examples.domain.proto.roboapp.damage_panel_pb2 import DamagePanelMessage, Target
+from roboapp.damage_panel_pb2 import DamagePanelMessage, Target
 
 key_expr = "damagepanel"
 

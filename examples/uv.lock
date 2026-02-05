@@ -28,19 +28,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/ff/2e/abfed7a721928e14aeb900182ff695be474c4ee5f07ef0874cc5ecd5b0b1/betterproto-1.2.5.tar.gz", hash = "sha256:74a3ab34646054f674d236d1229ba8182dc2eae86feb249b8590ef496ce9803d", size = 26098, upload-time = "2020-05-27T11:47:32.777Z" }
 
 [[package]]
-name = "buf"
-version = "1.0.0"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "docopt" },
-    { name = "tabulate" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/ae/d1/58bdc6fedba2f9347bdecc02c9b6511a3e4d9e06e5c28e3bf81fafe32963/buf-1.0.0.tar.gz", hash = "sha256:b46b755d5d90ea9f1fa9584f7dc3665e75d635c099b1573a343786968515b94f", size = 17155, upload-time = "2018-09-06T01:40:41.767Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/e0/2e/b034a5e5d2009f866ac52982ce1732b373bc3e816d56ed804394699955ba/buf-1.0.0-py3-none-any.whl", hash = "sha256:a066e6619c6fc23794bbd8055fe8aa800a3265956db5f496849d3d3e04fb4b51", size = 20575, upload-time = "2018-09-06T01:40:40.274Z" },
-]
-
-[[package]]
 name = "cel-python"
 version = "0.5.0"
 source = { registry = "https://pypi.org/simple" }
@@ -140,12 +127,6 @@ wheels = [
 ]
 
 [[package]]
-name = "docopt"
-version = "0.6.2"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/a2/55/8f8cab2afd404cf578136ef2cc5dfb50baa1761b68c9da1fb1e4eed343c9/docopt-0.6.2.tar.gz", hash = "sha256:49b3a825280bd66b3aa83585ef59c4a8c82f2c8a522dbe754a8bc8d08c85c491", size = 25901, upload-time = "2014-06-16T11:18:57.406Z" }
-
-[[package]]
 name = "eclipse-zenoh"
 version = "1.6.2"
 source = { registry = "https://pypi.org/simple" }
@@ -167,7 +148,6 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "betterproto" },
-    { name = "buf" },
     { name = "eclipse-zenoh" },
     { name = "protobuf" },
     { name = "protovalidate" },
@@ -188,7 +168,6 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "betterproto", specifier = ">=1.2.5" },
-    { name = "buf", specifier = ">=1.0.0" },
     { name = "eclipse-zenoh", specifier = "==1.6.2" },
     { name = "protobuf", specifier = ">=6.33.5" },
     { name = "protovalidate", specifier = ">=1.1.1" },
@@ -768,12 +747,6 @@ name = "stringcase"
 version = "1.2.0"
 source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/f3/1f/1241aa3d66e8dc1612427b17885f5fcd9c9ee3079fc0d28e9a3aeeb36fa3/stringcase-1.2.0.tar.gz", hash = "sha256:48a06980661908efe8d9d34eab2b6c13aefa2163b3ced26972902e3bdfd87008", size = 2958, upload-time = "2017-08-06T01:40:57.021Z" }
-
-[[package]]
-name = "tabulate"
-version = "0.8.2"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/12/c2/11d6845db5edf1295bc08b2f488cf5937806586afe42936c3f34c097ebdc/tabulate-0.8.2.tar.gz", hash = "sha256:e4ca13f26d0a6be2a2915428dc21e732f1e44dad7f76d7030b2ef1ec251cf7f2", size = 45758, upload-time = "2017-11-26T12:18:19.126Z" }
 
 [[package]]
 name = "taskipy"

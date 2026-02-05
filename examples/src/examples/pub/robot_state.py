@@ -1,7 +1,7 @@
 import argparse
 
 from examples.common.expub import ExamplePub
-from examples.domain.proto.roboapp.robot_state_pb2 import RobotStateMessage
+from roboapp.robot_state_pb2 import RobotStateMessage
 
 key_expr = "robotstate"
 

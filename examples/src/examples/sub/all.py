@@ -3,13 +3,13 @@ import time
 import zenoh
 
 from examples.common.zenoh_transmitter import create_zenoh_session
-from examples.domain.proto.roboapp.camera_switch_pb2 import CameraSwitchMessage
-from examples.domain.proto.roboapp.damage_panel_pb2 import DamagePanelMessage
-from examples.domain.proto.roboapp.disks_pb2 import DisksMessage
-from examples.domain.proto.roboapp.flap_pb2 import FlapMessage
-from examples.domain.proto.roboapp.lidar_range_pb2 import LiDARRange
-from examples.domain.proto.roboapp.lidar_vector_pb2 import LiDARVector
-from examples.domain.proto.roboapp.robot_state_pb2 import RobotStateMessage
+from roboapp.camera_switch_pb2 import CameraSwitchMessage
+from roboapp.damage_panel_pb2 import DamagePanelMessage
+from roboapp.disks_pb2 import DisksMessage
+from roboapp.flap_pb2 import FlapMessage
+from roboapp.lidar_range_pb2 import LiDARRange
+from roboapp.lidar_vector_pb2 import LiDARVector
+from roboapp.robot_state_pb2 import RobotStateMessage
 
 key_expr = (
     "lidar/force_vector",

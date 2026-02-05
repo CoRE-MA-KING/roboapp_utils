@@ -1,7 +1,7 @@
 import random
 
 from examples.common.expub import ExamplePub
-from examples.domain.proto.roboapp.lidar_vector_pb2 import LiDARVector
+from roboapp.lidar_vector_pb2 import LiDARVector
 
 key_expr = "lidar/force_vector"
 

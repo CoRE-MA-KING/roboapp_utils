@@ -1,7 +1,7 @@
 import random
 
 from examples.common.expub import ExamplePub
-from examples.domain.proto.roboapp.camera_switch_pb2 import CameraSwitchMessage
+from roboapp.camera_switch_pb2 import CameraSwitchMessage
 
 key_expr = "cam/switch"
 
