@@ -1,11 +1,11 @@
 [Unit]
-Description=Roboapp UI System
-After=graphical-session.target
+Description=Roboapp {{name}} Service
 After=network-online.target
 Wants=network-online.target
 
 [Service]
-ExecStart={{APP_FOLDER}}/ui_system/src-tauri/target/release/ui_system
+WorkingDirectory={{app_folder}}/{{working_dir}}
+ExecStart={{app_folder}}/{{working_dir}}/{{executable}} {{args}}
 ExecStop=/bin/kill ${MAINPID}
 Restart=always
 RestartSec=3

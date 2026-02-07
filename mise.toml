@@ -10,6 +10,10 @@ config_roots = [
 buf = "latest"
 protoc = "latest"
 
+[tasks.configurator]
+alias = "start"
+depends = ["//configurator:configurator"]
+
 [tasks.test]
 description = "Run all tests"
 run = "./scripts/test_codegen.sh"

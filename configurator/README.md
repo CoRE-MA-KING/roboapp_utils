@@ -21,6 +21,29 @@
 ### 起動設定のインストール
 
 - アプリケーションの起動設定をインストールします。
+自動起動は `autostart.toml` の設定に基づいて行われます。
+
+#### autostart.toml の仕様
+
+- 各アプリケーションごとにテーブル（例: `[app_name]`）を作成します。
+- フィールド:
+  - `working_dir` (**必須**, 文字列): 実行時の作業ディレクトリ
+  - `executable` (**必須**, 文字列): 実行ファイル名またはパス
+  - `args` (**任意**, 文字列または配列): コマンドライン引数（省略可、配列またはスペース区切り文字列）
+
+##### 例
+
+```toml
+[my_app]
+working_dir = "/home/usper/my_app"
+executable = ".venv/bin/python3"
+args = ["main.py", "--option", "value"]
+
+[another_app]
+working_dir = "/opt/another"
+executable = "/opt/another/bin/start.sh"
+args = "--debug"
+```
 
 ### Roboappの起動・停止
 
