@@ -14,9 +14,18 @@ protoc = "latest"
 description = "Run all tests"
 run = "./scripts/test_codegen.sh"
 
-[tasks.gen]
+[tasks.sync]
+description = "Sync dependencies for utils"
+run = "echo 'Syncing utils...'"
+
+[tasks.generate_proto]
 description = "Generate Python code from proto files"
+wait_for = ["sync"]
 run = "mkdir -p examples/src/roboapp && mkdir -p examples/src/buf/validate && protoc --python_out=examples/src/ --proto_path=proto $(find proto -name '*.proto')"
+
+[tasks.deps]
+description = "Install dependencies and generate code"
+depends = ["sync", "generate_proto"]
 
 [tasks.lint]
 description = "Lint proto files (using protoc as validator)"

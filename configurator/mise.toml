@@ -2,16 +2,19 @@
 uv = "0.9"
 prettier = "latest"
 
-[tasks.deps]
+[tasks.sync]
 description = "Install and sync Python dependencies using uv"
 run = "uv sync"
-alias = "build"
 sources = [
   "pyproject.toml",
   "uv.lock",
 ]
 outputs = { auto = true }
 
+[tasks.deps]
+description = "Install dependencies and generate code"
+depends = ["sync"]
+alias = "build"
 
 [tasks.lint_python]
 depends = ["deps"]
