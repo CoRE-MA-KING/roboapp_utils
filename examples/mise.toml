@@ -3,9 +3,7 @@ uv = "0.9"
 
 [tasks.generate_proto]
 description = "Generate Python code from Protobuf files"
-wait_for = ["sync"]
 run = """
-mkdir -p src/roboapp src/buf/validate
 protoc \
   --python_out=src \
   --pyi_out=src \
@@ -16,18 +14,16 @@ touch src/roboapp/__init__.py src/buf/__init__.py src/buf/validate/__init__.py
 sources = ["../proto/**/*.proto"]
 outputs = ["src/roboapp/*_pb2.py*", "src/buf/validate/*_pb2.py*"]
 
-[tasks.sync]
-description = "Install and sync Python dependencies using uv for examples"
+[tasks.deps]
+alias = "build"
+description = "Install dependencies and generate code"
+depends = ["generate_proto"]
 run = "uv sync"
 sources = [
   "pyproject.toml",
   "uv.lock",
 ]
 outputs = { auto = true }
-
-[tasks.deps]
-description = "Install dependencies and generate code"
-depends = ["sync", "generate_proto"]
 
 [tasks.lint]
 depends = ["deps"]
