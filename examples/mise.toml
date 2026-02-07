@@ -17,6 +17,7 @@ outputs = ["src/roboapp/*_pb2.py*", "src/buf/validate/*_pb2.py*"]
 
 [tasks.deps]
 description = "Install and sync Python dependencies using uv for examples"
+depends = ["generate_proto"]
 run = "uv sync"
 sources = [
   "pyproject.toml",
@@ -24,20 +25,17 @@ sources = [
 ]
 outputs = { auto = true }
 
-[tasks.build]
-depends = ["generate_proto", "deps"]
-
 [tasks.lint]
-depends = ["deps", "build"]
+depends = ["deps"]
 description = "Run Python linters and type checkers for examples"
 run = ["uv run task lint", "uv run task check"]
 
 [tasks.format]
-depends = ["deps", "build"]
+depends = ["deps"]
 description = "Format Python code in examples using ruff"
 run = "uv run task format"
 
 [tasks.test]
-depends = ["deps", "build"]
+depends = ["deps"]
 description = "Execute Python tests for examples"
 run = ["uv run task test"]

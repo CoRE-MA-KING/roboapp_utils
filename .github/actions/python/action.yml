@@ -1,0 +1,12 @@
+name: "Setup Python Environment"
+description: "Setup Python Environment"
+inputs:
+  workdir:
+    description: "Working directory for the Python project"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - uses: astral-sh/setup-uv@v6
+      with:
+        enable-cache: true
