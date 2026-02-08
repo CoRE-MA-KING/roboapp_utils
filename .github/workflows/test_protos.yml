@@ -18,12 +18,14 @@ jobs:
   validate-protos:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Install protoc
-        uses: arduino/setup-protoc@v3
+      - uses: actions/checkout@v6
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          submodules: recursive
+
+      - uses: ./.github/actions/mise
+
+      - name: Lint Proto
+        run: buf format --exit-code -d proto
 
       - name: Run Code Generation Test
         run: ./scripts/test_codegen.sh
