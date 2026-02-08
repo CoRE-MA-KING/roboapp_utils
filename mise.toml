@@ -6,6 +6,10 @@ config_roots = [
   "./examples/",
 ]
 
+[settings]
+experimental = true
+task.monorepo_depth = 2
+
 [tools]
 actionlint = "latest"
 buf = "latest"
