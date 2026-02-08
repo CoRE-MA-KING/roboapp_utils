@@ -2,12 +2,13 @@ name: Examples Check
 on:
   pull_request:
     paths:
-      - "configurator/src/**"
-      - ".github/workflows/examples.yaml"
+      - "examples/src/**"
+      - "proto/**"
+      - ".github/workflows/examples.yml"
 env:
   WORKDIR: examples
 jobs:
-  Configurator_Check:
+  Examples_Check:
     runs-on: ubuntu-latest
     defaults:
       run:

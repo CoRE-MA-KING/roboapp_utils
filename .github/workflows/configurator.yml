@@ -3,7 +3,7 @@ on:
   pull_request:
     paths:
       - "configurator/src/**"
-      - ".github/workflows/configurator.yaml"
+      - ".github/workflows/configurator.yml"
 env:
   WORKDIR: configurator
 jobs:
