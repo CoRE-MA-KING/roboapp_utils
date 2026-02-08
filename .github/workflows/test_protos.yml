@@ -26,7 +26,7 @@ jobs:
 
       - name: Lint Proto
         run: |
-          buf format --exit-code -d
+          buf format --exit-code -d --error-format github-actions
           buf lint --error-format github-actions
 
       - name: Run Code Generation Test

@@ -7,12 +7,21 @@ config_roots = [
 ]
 
 [tools]
+actionlint = "latest"
 buf = "latest"
 protoc = "latest"
 
 [tasks.configurator]
 alias = "start"
 depends = ["//configurator:configurator"]
+
+[tasks.lint]
+description = "Run all linters"
+depends = ["lint_proto", "action_lint"]
+
+[tasks.action_lint]
+description = "Lint GitHub Actions workflows"
+run = "actionlint"
 
 [tasks.test]
 description = "Run all tests"

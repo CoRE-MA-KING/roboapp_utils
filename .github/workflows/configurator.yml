@@ -20,6 +20,8 @@ jobs:
         with:
           workdir: ${{ env.WORKDIR }}
       - uses: ./.github/actions/python
+        with:
+          workdir: ${{ env.WORKDIR }}
       - name: Install Dependencies
         run: |
           mise //:deps
