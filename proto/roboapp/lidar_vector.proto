@@ -5,7 +5,9 @@ package roboapp;
 import "buf/validate/validate.proto";
 
 message LiDARVector {
-  float linear = 1 [(buf.validate.field).required = true];
+  float linear = 1 [
+    (buf.validate.field).required = true
+  ];
   float angular = 2 [
     (buf.validate.field).required = true,
     (buf.validate.field).float = {
