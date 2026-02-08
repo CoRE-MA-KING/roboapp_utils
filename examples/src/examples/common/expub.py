@@ -2,7 +2,6 @@ import datetime
 import time
 from abc import ABC, abstractmethod
 
-
 from examples.common.zenoh_transmitter import create_zenoh_session
 
 
@@ -47,5 +46,5 @@ class ExamplePub(ABC):
             self.session.close()  # type: ignore
 
     @abstractmethod
-    def create_message(self) :
+    def create_message(self):
         pass
