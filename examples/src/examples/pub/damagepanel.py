@@ -20,6 +20,8 @@ class DamagePanelPub(ExamplePub):
                     x=random.randint(0, 1280),
                     y=random.randint(0, 720),
                     distance=random.randint(0, 100),
+                    width=random.randint(10, 50),
+                    height=random.randint(20, 100),
                 )
             )
         return msg

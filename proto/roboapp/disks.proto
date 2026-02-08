@@ -5,6 +5,6 @@ package roboapp;
 import "buf/validate/validate.proto";
 
 message DisksMessage {
-  int32 left = 1 [(buf.validate.field).int32.gte = 0];
-  int32 right = 2 [(buf.validate.field).int32.gte = 0];
+  int32 left = 1 [(buf.validate.field).required = true, (buf.validate.field).int32.gte = 0];
+  int32 right = 2 [(buf.validate.field).required = true, (buf.validate.field).int32.gte = 0];
 }
