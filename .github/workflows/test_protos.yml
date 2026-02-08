@@ -23,6 +23,8 @@ jobs:
           submodules: recursive
 
       - uses: ./.github/actions/mise
+        with:
+          workdir: .
 
       - name: Lint Proto
         run: |
