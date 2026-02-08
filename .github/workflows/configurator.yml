@@ -24,7 +24,6 @@ jobs:
           workdir: ${{ env.WORKDIR }}
       - name: Install Dependencies
         run: |
-          mise //:deps
           mise //${{ env.WORKDIR }}:deps
       - name: TypeCheck
         run: |
