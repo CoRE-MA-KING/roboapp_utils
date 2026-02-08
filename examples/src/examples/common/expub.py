@@ -2,7 +2,7 @@ import datetime
 import time
 from abc import ABC, abstractmethod
 
-from pydantic import BaseModel
+from google.protobuf.message import Message
 
 from examples.common.zenoh_transmitter import create_zenoh_session
 
@@ -25,7 +25,9 @@ class ExamplePub(ABC):
                     f"[{datetime.datetime.now().strftime('%H:%M:%S.%f')[:-3]}] Publishing : {self.publisher.key_expr}: {msg}"
                 )
 
-                self.publisher.put(msg.model_dump_json())
+                payload = msg.SerializeToString()
+
+                self.publisher.put(payload)
                 if self.hz is None:
                     break
                 elif self.hz:
@@ -41,5 +43,5 @@ class ExamplePub(ABC):
             self.session.close()  # type: ignore
 
     @abstractmethod
-    def create_message(self) -> BaseModel:
+    def create_message(self) -> Message:
         pass

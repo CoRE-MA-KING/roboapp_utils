@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package roboapp;
+
+import "buf/validate/validate.proto";
+
+message LiDARVector {
+  float linear = 1;
+  float angular = 2 [(buf.validate.field).float = {
+    gte: 0
+    lt: 360
+  }];
+}

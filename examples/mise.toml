@@ -1,10 +1,24 @@
 [tools]
 uv = "0.9"
 
+[tasks.generate_proto]
+description = "Generate Python code from Protobuf files"
+run = """
+protoc \
+  --python_out=src \
+  --pyi_out=src \
+  --proto_path=../proto \
+  $(find ../proto -name "*.proto")
+touch src/roboapp/__init__.py src/buf/__init__.py src/buf/validate/__init__.py
+"""
+sources = ["../proto/**/*.proto"]
+outputs = ["src/roboapp/**/*.py*", "src/buf/**/*.py*"]
+
 [tasks.deps]
-description = "Install and sync Python dependencies using uv for examples"
-run = "uv sync"
 alias = "build"
+description = "Install dependencies and generate code"
+depends = ["generate_proto"]
+run = "uv sync"
 sources = [
   "pyproject.toml",
   "uv.lock",
@@ -24,9 +38,4 @@ run = "uv run task format"
 [tasks.test]
 depends = ["deps"]
 description = "Execute Python tests for examples"
-run = "uv run task test"
-
-[tasks.start]
-depends = ["deps"]
-description = "Start the examples application"
-run = "uv run python3 src/examples/main.py"
+run = ["uv run task test"]

@@ -1,0 +1,38 @@
+name: Configurator Check
+on:
+  pull_request:
+    paths:
+      - "configurator/src/**"
+      - ".github/workflows/configurator.yaml"
+env:
+  WORKDIR: configurator
+jobs:
+  Configurator_Check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ env.WORKDIR }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: recursive
+      - uses: ./.github/actions/mise
+        with:
+          workdir: ${{ env.WORKDIR }}
+      - uses: ./.github/actions/python
+      - name: Install Dependencies
+        run: |
+          mise //:deps
+          mise //${{ env.WORKDIR }}:deps
+      - name: TypeCheck
+        run: |
+          uv run mypy .
+      - name: Lint
+        run: |
+          uv run ruff check .
+      - name: Format
+        run: |
+          uv run ruff format . --check --diff
+      - name: Run Tests
+        run: |
+          uv run task test

@@ -1,7 +1,7 @@
 import random
 
 from examples.common.expub import ExamplePub
-from examples.domain.messages import DisksMessage
+from roboapp.disks_pb2 import DisksMessage
 
 key_expr = "disks"
 

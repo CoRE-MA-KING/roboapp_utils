@@ -1,7 +1,7 @@
 import random
 
 from examples.common.expub import ExamplePub
-from examples.domain.messages import FlapMessage
+from roboapp.flap_pb2 import FlapMessage
 
 key_expr = "flap"
 

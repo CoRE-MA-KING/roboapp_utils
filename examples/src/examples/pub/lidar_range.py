@@ -1,7 +1,5 @@
 from examples.common.expub import ExamplePub
-from examples.domain.messages import (
-    LiDARRange,
-)
+from roboapp.lidar_range_pb2 import LiDARRange
 
 key_expr = "lidar/range"
 

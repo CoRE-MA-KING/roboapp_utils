@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package roboapp;
+
+import "buf/validate/validate.proto";
+
+message FlapMessage {
+  float pitch = 1 [(buf.validate.field).float = {
+    gte: 0
+    lte: 15
+  }];
+  float yaw = 2 [(buf.validate.field).float = {
+    gte: 0
+    lte: 40
+  }];
+}

@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package roboapp;
+
+import "buf/validate/validate.proto";
+
+message Target {
+  int32 x = 1 [(buf.validate.field).int32 = {
+    gte: 0
+    lte: 1280
+  }];
+  int32 y = 2 [(buf.validate.field).int32 = {
+    gte: 0
+    lte: 720
+  }];
+  int32 width = 3[(buf.validate.field).int32.gte = 0];
+  int32 height = 4 [(buf.validate.field).int32.gte = 0];
+  int32 distance = 5 [(buf.validate.field).int32.gte = 0];
+}
+
+message DamagePanelMessage {
+  optional Target target = 1;
+}

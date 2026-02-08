@@ -1,20 +1,17 @@
 import argparse
-import random
-from typing import Literal
 
 from examples.common.expub import ExamplePub
-from examples.domain.messages import RobotStateId, RobotStateMessage
+from roboapp.robot_state_pb2 import RobotStateMessage
 
 key_expr = "robotstate"
 
 
 class RobotStatePub(ExamplePub):
     def create_message(self) -> RobotStateMessage:
-        state_ids = list(RobotStateId)
-        colors: list[Literal["blue", "red"]] = ["blue", "red"]
+        # RobotStateIdのenum値は適宜置き換えてください
         return RobotStateMessage(
-            state=random.choice(state_ids).value,
-            color=random.choice(colors),
+            state=0,  # 例: IDLE
+            color="blue",
         )
 
 

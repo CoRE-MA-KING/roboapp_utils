@@ -1,0 +1,29 @@
+name: Test Protobuf Definitions
+
+on:
+  push:
+    branches: [ "main", "master" ]
+    paths:
+      - 'proto/**'
+      - 'scripts/**'
+      - '.github/workflows/test_protos.yml'
+  pull_request:
+    paths:
+      - 'proto/**'
+      - 'scripts/**'
+      - '.github/workflows/test_protos.yml'
+  workflow_dispatch:
+
+jobs:
+  validate-protos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install protoc
+        uses: arduino/setup-protoc@v3
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run Code Generation Test
+        run: ./scripts/test_codegen.sh

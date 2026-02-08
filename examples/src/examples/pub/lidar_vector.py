@@ -1,14 +1,14 @@
 import random
 
 from examples.common.expub import ExamplePub
-from examples.domain.messages import LiDARVectorMessage
+from roboapp.lidar_vector_pb2 import LiDARVector
 
 key_expr = "lidar/force_vector"
 
 
 class LiDARVectorPub(ExamplePub):
-    def create_message(self) -> LiDARVectorMessage:
-        return LiDARVectorMessage(
+    def create_message(self) -> LiDARVector:
+        return LiDARVector(
             linear=random.uniform(0.0, 10.0),
             angular=random.uniform(0.0, 360.0),
         )
