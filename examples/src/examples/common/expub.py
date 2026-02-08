@@ -2,6 +2,8 @@ import datetime
 import time
 from abc import ABC, abstractmethod
 
+from google.protobuf.message import Message
+
 from examples.common.zenoh_transmitter import create_zenoh_session
 
 
@@ -23,12 +25,7 @@ class ExamplePub(ABC):
                     f"[{datetime.datetime.now().strftime('%H:%M:%S.%f')[:-3]}] Publishing : {self.publisher.key_expr}: {msg}"
                 )
 
-                if hasattr(msg, "SerializeToString"):
-                    payload = msg.SerializeToString()
-                elif hasattr(msg, "model_dump_json"):
-                    payload = msg.model_dump_json()
-                else:
-                    payload = str(msg)
+                payload = msg.SerializeToString()
 
                 self.publisher.put(payload)
                 if self.hz is None:
@@ -46,5 +43,5 @@ class ExamplePub(ABC):
             self.session.close()  # type: ignore
 
     @abstractmethod
-    def create_message(self):
+    def create_message(self) -> Message:
         pass

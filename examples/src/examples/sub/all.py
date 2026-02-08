@@ -1,6 +1,7 @@
 import time
 
 import zenoh
+from google.protobuf.message import Message
 
 from examples.common.zenoh_transmitter import create_zenoh_session
 from roboapp.camera_switch_pb2 import CameraSwitchMessage
@@ -21,7 +22,7 @@ key_expr = (
     "robotstate",
 )
 
-key_to_proto = {
+key_to_proto: dict[str, type[Message]] = {
     "lidar/force_vector": LiDARVector,
     "lidar/range": LiDARRange,
     "cam/switch": CameraSwitchMessage,
@@ -34,12 +35,15 @@ key_to_proto = {
 
 def callback(sample: zenoh.Sample) -> None:
     key = str(sample.key_expr)
-    proto_class = key_to_proto.get(key)
-    if proto_class:
-        msg = proto_class.FromString(sample.payload.to_bytes())
-        print(f"Received {key}: {msg}")
-    else:
+
+    proto_class: type[Message] | None = key_to_proto.get(key, None)
+
+    if proto_class is None:
         print(f"Received {key}: {sample.payload.to_string()}")
+        return
+
+    msg = proto_class.FromString(sample.payload.to_bytes())
+    print(f"Received {key}: {msg}")
 
 
 if __name__ == "__main__":
