@@ -6,7 +6,12 @@ config_roots = [
   "./examples/",
 ]
 
+[settings]
+experimental = true
+task.monorepo_depth = 2
+
 [tools]
+actionlint = "latest"
 buf = "latest"
 protoc = "latest"
 
@@ -14,6 +19,26 @@ protoc = "latest"
 alias = "start"
 depends = ["//configurator:configurator"]
 
+[tasks.lint]
+description = "Run all linters"
+depends = ["lint_proto", "action_lint"]
+
+[tasks.action_lint]
+description = "Lint GitHub Actions workflows"
+run = "actionlint"
+
 [tasks.test]
 description = "Run all tests"
+depends = ["lint_proto"]
 run = "./scripts/test_codegen.sh"
+
+[tasks.lint_proto]
+description = "Check Protobuf format and lint using buf"
+run = [
+  "buf format --exit-code -d .",
+  "buf lint .",
+]
+
+[tasks.format_proto]
+description = "Format Protobuf files using buf"
+run = "buf format -w ."

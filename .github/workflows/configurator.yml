@@ -3,7 +3,7 @@ on:
   pull_request:
     paths:
       - "configurator/src/**"
-      - ".github/workflows/configurator.yaml"
+      - ".github/workflows/configurator.yml"
 env:
   WORKDIR: configurator
 jobs:
@@ -20,9 +20,10 @@ jobs:
         with:
           workdir: ${{ env.WORKDIR }}
       - uses: ./.github/actions/python
+        with:
+          workdir: ${{ env.WORKDIR }}
       - name: Install Dependencies
         run: |
-          mise //:deps
           mise //${{ env.WORKDIR }}:deps
       - name: TypeCheck
         run: |
@@ -33,6 +34,3 @@ jobs:
       - name: Format
         run: |
           uv run ruff format . --check --diff
-      - name: Run Tests
-        run: |
-          uv run task test

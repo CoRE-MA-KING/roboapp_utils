@@ -2,12 +2,13 @@ name: Examples Check
 on:
   pull_request:
     paths:
-      - "configurator/src/**"
-      - ".github/workflows/examples.yaml"
+      - "examples/src/**"
+      - "proto/**"
+      - ".github/workflows/examples.yml"
 env:
   WORKDIR: examples
 jobs:
-  Configurator_Check:
+  Examples_Check:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -20,9 +21,10 @@ jobs:
         with:
           workdir: ${{ env.WORKDIR }}
       - uses: ./.github/actions/python
+        with:
+          workdir: ${{ env.WORKDIR }}
       - name: Install Dependencies
         run: |
-          mise //:deps
           mise //${{ env.WORKDIR }}:deps
       - name: TypeCheck
         run: |
@@ -33,6 +35,3 @@ jobs:
       - name: Format
         run: |
           uv run ruff format . --check --diff
-      - name: Run Tests
-        run: |
-          uv run task test

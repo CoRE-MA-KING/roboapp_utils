@@ -3,6 +3,7 @@ import time
 from abc import ABC, abstractmethod
 
 from google.protobuf.message import Message
+from protovalidate import validate
 
 from examples.common.zenoh_transmitter import create_zenoh_session
 
@@ -20,6 +21,9 @@ class ExamplePub(ABC):
         try:
             while True:
                 msg = self.create_message()
+
+                # Validate the message before publishing
+                validate(msg)
 
                 print(
                     f"[{datetime.datetime.now().strftime('%H:%M:%S.%f')[:-3]}] Publishing : {self.publisher.key_expr}: {msg}"
