@@ -11,7 +11,6 @@ dependencies = [
   "eclipse-zenoh==1.6.2",
   "protobuf>=6.33.5",
   "protovalidate>=1.1.1",
-  "pydantic>=2.11.7",
 ]
 
 [dependency-groups]
