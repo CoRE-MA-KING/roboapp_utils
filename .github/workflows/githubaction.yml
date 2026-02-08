@@ -14,4 +14,4 @@ jobs:
           workdir: .
       - name: Run actionlint
         run: |
-          mise run action_lint
+          mise run //:action_lint
