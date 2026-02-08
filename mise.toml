@@ -20,8 +20,11 @@ depends = ["lint_proto"]
 run = "./scripts/test_codegen.sh"
 
 [tasks.lint_proto]
-description = "Check Protobuf format using buf"
-run = "buf format --exit-code -d proto"
+description = "Check Protobuf format and lint using buf"
+run = [
+  "buf format --exit-code -d proto",
+  "buf lint proto",
+]
 
 [tasks.format_proto]
 description = "Format Protobuf files using buf"

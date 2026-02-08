@@ -25,7 +25,9 @@ jobs:
       - uses: ./.github/actions/mise
 
       - name: Lint Proto
-        run: buf format --exit-code -d proto
+        run: |
+          buf format --exit-code -d proto
+          buf lint --error-format github-actions proto
 
       - name: Run Code Generation Test
         run: ./scripts/test_codegen.sh
