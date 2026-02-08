@@ -45,4 +45,3 @@ extend-select = ["I", "TC", "UP", "W"]
 check = "mypy . --strict"
 format = "ruff check . --fix && ruff format ."
 lint = "ruff check ."
-test = "pytest --cov --cov-report=html test/"
