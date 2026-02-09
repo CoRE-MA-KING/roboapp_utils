@@ -5,9 +5,16 @@
 ## ディレクトリ構成
 
 - `src/examples/pub/`: 各種センサデータやステータスを配信するパブリッシャーのサンプル
-  - `camswitch.py`, `damagepanel.py`, `disk.py`, `flap.py`, `lidar_range.py`, `lidar_vector.py`, `robot_state.py`
+  - `camswitch.py`,
+  - `damagepanel.py`
+  - `disk.py`
+  - `flap.py`
+  - `lidar_range.py`
+  - `lidar_vector.py`
+  - `robot_state.py`
 - `src/examples/sub/`: 配信されたデータを購読するサブスクライバーのサンプル
-  - `all.py` (すべてのメッセージを購読), `hz.py` (メッセージの頻度を計測)
+  - `all.py` (すべてのメッセージを購読)
+  - `hz.py` (メッセージの頻度を計測)
 
 ## 環境構築
 

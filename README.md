@@ -22,12 +22,16 @@ mise install
 
 ### 実行の準備
 
-本リポジトリのexamplesや、その他の [roboapp](https://github.com/CoRE-MA-KING/roboapp.git) と接続するツールを実行する前に、Zenoh ルーター（`zenohd`）を起動しておく必要があります。
-`configurator` でセットアップ済みの場合は、以下のコマンドでサービスを起動してください。
+- リポジトリのexamplesや、その他のアプリケーションと接続する前にZenoh ルーター（`zenohd`）を起動しておく必要があります。
 
-```bash
-systemctl --user start roboapp-zenohd.service
-```
+  - `zenohd`（プロセスが単体が起動します）
+  - `configurator` でセットアップ済みの場合は、以下のコマンドでサービスを起動してください。
+
+    ```bash
+    systemctl --user start roboapp-zenohd.service
+    ```
+
+  - 永続化する場合、`configurator`の自動起動設定を行ってください
 
 ## 各プロジェクトの利用方法
 
