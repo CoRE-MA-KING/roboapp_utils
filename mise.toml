@@ -21,7 +21,12 @@ depends = ["//configurator:configurator"]
 
 [tasks.lint]
 description = "Run all linters"
-depends = ["lint_proto", "action_lint"]
+depends = [
+  "lint_proto",
+  "action_lint",
+  "//configurator:lint",
+  "//examples:lint"
+]
 
 [tasks.action_lint]
 description = "Lint GitHub Actions workflows"
@@ -42,3 +47,11 @@ run = [
 [tasks.format_proto]
 description = "Format Protobuf files using buf"
 run = "buf format -w ."
+
+[tasks.format]
+depends = [
+  "//:format_proto",
+  "//configurator:format",
+  "//configurator:format_json5",
+  "//examples:format"
+]

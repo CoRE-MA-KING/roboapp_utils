@@ -1,7 +1,5 @@
 import random
 
-from examples.src.buf import validate
-
 from examples.common.expub import ExamplePub
 from roboapp.damagepanel_color_pb2 import DamagePanelColorMessage
 
@@ -14,7 +12,6 @@ class DamagePanelPub(ExamplePub):
 
     def create_message(self) -> DamagePanelColorMessage:
         msg = DamagePanelColorMessage(color=random.choice(["red", "blue"]))
-        validate(msg)
         return msg
 
 

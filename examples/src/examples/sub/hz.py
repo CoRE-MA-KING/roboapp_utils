@@ -3,6 +3,7 @@ import time
 from collections import deque
 
 import zenoh
+
 from examples.common.zenoh_transmitter import create_zenoh_session
 
 # 監視対象のトピック
@@ -11,7 +12,8 @@ TOPICS = (
     "lidar/range",
     "cam/port",
     "cam/switch",
-    "damagepanel",
+    "damagepanel/color",
+    "damagepanel/target",
     "flap",
     "disks",
     "robotstate",
