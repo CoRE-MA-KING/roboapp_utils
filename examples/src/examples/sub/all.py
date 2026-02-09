@@ -1,9 +1,9 @@
 import time
 
 import zenoh
-from google.protobuf.message import Message
-
 from examples.common.zenoh_transmitter import create_zenoh_session
+from google.protobuf.message import Message
+from roboapp.camera_port_pb2 import CameraPortMessage
 from roboapp.camera_switch_pb2 import CameraSwitchMessage
 from roboapp.damage_panel_pb2 import DamagePanelMessage
 from roboapp.disks_pb2 import DisksMessage
@@ -15,6 +15,7 @@ from roboapp.robot_state_pb2 import RobotStateMessage
 key_expr = (
     "lidar/force_vector",
     "lidar/range",
+    "cam/port",
     "cam/switch",
     "damagepanel",
     "flap",
@@ -26,6 +27,7 @@ key_to_proto: dict[str, type[Message]] = {
     "lidar/force_vector": LiDARVector,
     "lidar/range": LiDARRange,
     "cam/switch": CameraSwitchMessage,
+    "cam/port": CameraPortMessage,
     "damagepanel": DamagePanelMessage,
     "flap": FlapMessage,
     "disks": DisksMessage,
