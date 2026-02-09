@@ -12,11 +12,13 @@
 ## 環境構築
 
 1. 依存関係のインストール
+
    ```bash
    mise install
    ```
 
 2. Python 依存パッケージのインストール
+
    ```bash
    mise deps
    ```
@@ -35,10 +37,6 @@ uv run python src/examples/sub/all.py
 
 ## 注意事項
 
-
-
 これらのサンプルを実行するには、Zenoh ルーターが動作している必要があります。
 
 `configurator` を使用して `roboapp-zenohd.service` をセットアップするか、ローカルで `zenohd` を実行してください。
-
-
