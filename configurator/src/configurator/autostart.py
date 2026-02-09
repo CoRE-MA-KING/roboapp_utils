@@ -54,11 +54,10 @@ def parse_autostart(target: Path) -> Sequence[AutoStart]:
 
 
 def auto_start(root_path: Path) -> None:
-    print(root_path)
-    targets = parse_autostart(root_path)
-    print(targets)
+    if root_path.exists():
+        targets = parse_autostart(root_path)
 
-    for t in targets:
-        place_autostart(t)
+        for t in targets:
+            place_autostart(t)
 
     place_zenoh_config()

@@ -4,10 +4,9 @@ from prompt_toolkit.shortcuts import (
     radiolist_dialog,
 )
 
-from configurator.autostart import parse_autostart, place_autostart
+from configurator.autostart import auto_start
 from configurator.systemd import (
     enable_systemd_service,
-    place_zenoh_config,
     run_systemd_services,
 )
 
@@ -29,12 +28,8 @@ if __name__ == "__main__":
         case "install":
             root_path = Path(__file__).parents[4] / "autostart.toml"
 
-            targets = parse_autostart(root_path)
+            auto_start(root_path)
 
-            for t in targets:
-                place_autostart(t)
-
-            place_zenoh_config()
         case "start":
             res_start: bool | None = radiolist_dialog(
                 title="Roboappの起動・停止",
