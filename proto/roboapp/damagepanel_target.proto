@@ -33,6 +33,6 @@ message Target {
   ];
 }
 
-message DamagePanelMessage {
+message DamagePaneltargetMessage {
   optional Target target = 1;
 }
