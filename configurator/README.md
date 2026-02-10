@@ -1,18 +1,29 @@
 # Configurator
 
-- roboapp の各種設定を実行するツールです
+`configurator` は、roboapp の各種設定を実行し、systemd サービスとしての管理を容易にするためのツールです。
+
+## 特徴
+
+- アプリケーションの systemd サービス登録
+- 自動起動の設定・解除
+- アプリケーションの起動・停止状態の管理
+- `autostart.toml` による宣言的なサービス管理
 
 ## 環境構築
+
+このディレクトリで以下を実行します：
 
 1. 依存関係のインストール
 
    - ```bash
-     eval "$(mise activate)"
-     mise i
+     mise install
      ```
 
 2. Python 依存パッケージのインストール
-   - `mise deps`
+
+   - ```bash
+     mise deps
+     ```
 
 ## 実行方法
 
