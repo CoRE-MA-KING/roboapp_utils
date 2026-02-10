@@ -10,8 +10,10 @@ from examples.common.zenoh_transmitter import create_zenoh_session
 TOPICS = (
     "lidar/force_vector",
     "lidar/range",
+    "cam/port",
     "cam/switch",
-    "damagepanel",
+    "damagepanel/color",
+    "damagepanel/target",
     "flap",
     "disks",
     "robotstate",

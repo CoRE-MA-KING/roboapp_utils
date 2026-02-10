@@ -1,7 +1,7 @@
 import random
 
 from examples.common.expub import ExamplePub
-from roboapp.damage_panel_pb2 import DamagePanelMessage, Target
+from roboapp.damagepanel_target_pb2 import DamagePanelTargetMessage, Target
 
 key_expr = "damagepanel"
 
@@ -11,11 +11,11 @@ class DamagePanelPub(ExamplePub):
         super().__init__(key, hz)
         self.no = no
 
-    def create_message(self) -> DamagePanelMessage:
+    def create_message(self) -> DamagePanelTargetMessage:
         if self.no:
-            msg = DamagePanelMessage(target=None)
+            msg = DamagePanelTargetMessage(target=None)
         else:
-            msg = DamagePanelMessage(
+            msg = DamagePanelTargetMessage(
                 target=Target(
                     x=random.randint(0, 1280),
                     y=random.randint(0, 720),
