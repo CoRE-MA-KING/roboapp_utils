@@ -3,7 +3,7 @@ import random
 from examples.common.expub import ExamplePub
 from roboapp.damagepanel_color_pb2 import DamagePanelColorMessage
 
-key_expr = "damagepanel"
+key_expr = "damagepanel/color"
 
 
 class DamagePanelPub(ExamplePub):
