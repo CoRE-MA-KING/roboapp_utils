@@ -3,7 +3,7 @@ import random
 from examples.common.expub import ExamplePub
 from roboapp.damagepanel_target_pb2 import DamagePanelTargetMessage, Target
 
-key_expr = "damagepanel"
+key_expr = "damagepanel/target"
 
 
 class DamagePanelPub(ExamplePub):
