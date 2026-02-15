@@ -1,5 +1,5 @@
 import argparse
-from random import choice, randint
+import random
 
 from examples.common.expub import ExamplePub
 from roboapp.robot_state_pb2 import RobotStateMessage
@@ -10,8 +10,8 @@ key_expr = "robotstate"
 class RobotStatePub(ExamplePub):
     def create_message(self) -> RobotStateMessage:
         return RobotStateMessage(
-            state=randint(0, 6),
-            color=choice(("blue", "red")),
+            state=random.randint(0, 6),
+            color=random.choice(("blue", "red")),
         )
 
 
