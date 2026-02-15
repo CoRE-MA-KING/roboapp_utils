@@ -4,6 +4,7 @@ from abc import ABC, abstractmethod
 
 from google.protobuf.message import Message
 from protovalidate import validate
+from protovalidate.validator import ValidationError
 
 from examples.common.zenoh_transmitter import create_zenoh_session
 
@@ -23,7 +24,13 @@ class ExamplePub(ABC):
                 msg = self.create_message()
 
                 # Validate the message before publishing
-                validate(msg)
+                try:
+                    validate(msg)
+                except ValidationError as e:
+                    print(f"Validation failed: {e}")
+                    if hasattr(e, "violations"):
+                        print("Violations:", e.violations)
+                    raise
 
                 print(
                     f"[{datetime.datetime.now().strftime('%H:%M:%S.%f')[:-3]}] Publishing : {self.publisher.key_expr}: {msg}"
