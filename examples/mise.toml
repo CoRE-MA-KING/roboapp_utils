@@ -11,8 +11,6 @@ protoc \
   $(find ../proto -name "*.proto")
 touch src/roboapp/__init__.py src/buf/__init__.py src/buf/validate/__init__.py
 """
-sources = ["../proto/**/*.proto"]
-outputs = ["src/roboapp/**/*.py*", "src/buf/**/*.py*"]
 
 [tasks.deps]
 alias = "build"

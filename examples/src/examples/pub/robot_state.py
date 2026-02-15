@@ -1,4 +1,5 @@
 import argparse
+import random
 
 from examples.common.expub import ExamplePub
 from roboapp.robot_state_pb2 import RobotStateMessage
@@ -8,10 +9,9 @@ key_expr = "robotstate"
 
 class RobotStatePub(ExamplePub):
     def create_message(self) -> RobotStateMessage:
-        # RobotStateIdのenum値は適宜置き換えてください
         return RobotStateMessage(
-            state=0,  # 例: IDLE
-            color="blue",
+            state=random.randint(0, 6),
+            color=random.choice(("blue", "red")),
         )
 
 
