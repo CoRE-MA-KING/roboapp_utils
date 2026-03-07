@@ -13,7 +13,7 @@ task.monorepo_depth = 2
 [tools]
 actionlint = "latest"
 buf = "latest"
-protoc = "latest"
+protoc = "32.1"
 
 [tasks.configurator]
 alias = "start"
