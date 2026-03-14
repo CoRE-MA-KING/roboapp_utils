@@ -2,6 +2,7 @@ import time
 
 import zenoh
 from google.protobuf.message import Message
+from prompt_toolkit.shortcuts import checkboxlist_dialog
 
 from examples.common.zenoh_transmitter import create_zenoh_session
 from roboapp.camera_port_pb2 import CameraPortMessage
@@ -53,8 +54,13 @@ def callback(sample: zenoh.Sample) -> None:
 
 
 if __name__ == "__main__":
+    results_array = checkboxlist_dialog(
+        title="CheckboxList dialog",
+        text="What would you like in your breakfast ?",
+        values=[(k, k) for k in key_expr],
+    ).run()
     with create_zenoh_session() as session:
-        for k in key_expr:
+        for k in results_array:
             session.declare_subscriber(k, callback)
 
         while True:
