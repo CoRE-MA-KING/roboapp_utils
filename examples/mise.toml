@@ -1,5 +1,8 @@
+[settings]
+lockfile = true
+
 [tools]
-uv = "0.9"
+uv = "0.13.9"
 
 [tasks.generate_proto]
 description = "Generate Python code from Protobuf files"

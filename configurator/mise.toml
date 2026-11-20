@@ -1,6 +1,9 @@
+[settings]
+lockfile = true
+
 [tools]
-uv = "0.9"
-prettier = "latest"
+uv = "0.13.9"
+prettier = "3.10"
 
 [tasks.deps]
 alias = "build"

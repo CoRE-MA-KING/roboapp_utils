@@ -1,4 +1,4 @@
-experimental_monorepo_root = true
+min_version = "2026.10.17"
 
 [monorepo]
 config_roots = [
@@ -9,10 +9,11 @@ config_roots = [
 [settings]
 experimental = true
 task.monorepo_depth = 2
+lockfile = true
 
 [tools]
-actionlint = "latest"
-buf = "latest"
+jactionlint = "v2.6.0"
+buf = "1.75"
 protoc = "32.1"
 
 [tasks.configurator]
